@@ -64,7 +64,7 @@ class Pager(object):
             if key == self.arg_name('offset'):
                 continue
             for value in request.args.getlist(key):
-                args.append((key, value.encode('utf-8')))
+                args.append((key, unicode(value).encode('utf-8')))
         return args
 
     @property
@@ -92,7 +92,7 @@ class Pager(object):
 
     def remove_url_state(self, arg, value):
         query_args = [t for t in self.query_args if
-                      t != (arg, value.encode('utf-8'))]
+                      t != (arg, unicode(value).encode('utf-8'))]
         return self.url(query_args)
 
     def page_url(self, page):
