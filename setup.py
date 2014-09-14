@@ -1,19 +1,17 @@
-"""
-A pager class for Flask
-"""
-from setuptools import setup
-
+from setuptools import setup, find_packages
 
 setup(
-    name='Flask-Pager',
+    name='restpager',
     version='0.1',
-    url='http://github.com/pudo/flask-pager',
+    url='http://github.com/pudo/restpager',
     license='MIT',
     author='Friedrich Lindenberg',
     author_email='friedrich@pudo.org',
-    description='A pager class for Flask',
-    long_description=__doc__,
-    py_modules=['flask_pager'],
+    description='A RESTful pager class for Flask',
+    long_description='A RESTful pager class for Flask',
+    packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
+    namespace_packages=[],
+    include_package_data=True,
     zip_safe=False,
     platforms='any',
     install_requires=[
