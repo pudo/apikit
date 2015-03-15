@@ -1,4 +1,6 @@
 from flask import request
+from werkzeug.exceptions import NotFound
+
 
 BOOL_TRUISH = ['true', '1', 'yes', 'y', 't']
 
@@ -28,3 +30,16 @@ def get_limit(default=50, field='limit'):
 def get_offset(default=0, field='offset'):
     """ Get an offset argument. """
     return max(0, arg_int(field, default=default))
+
+
+def obj_or_404(obj):
+    if obj is None:
+        raise NotFound()
+    return obj
+
+
+def request_data():
+    data = request.get_json(silent=True)
+    if data is None:
+        data = dict(request.form.items())
+    return data

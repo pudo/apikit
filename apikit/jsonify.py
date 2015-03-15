@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+from datetime import datetime, date
 from uuid import UUID
 from decimal import Decimal
 
@@ -17,16 +17,29 @@ class JSONEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, datetime):
             return obj.isoformat()
+        elif isinstance(obj, date):
+            return obj.isoformat()
         if isinstance(obj, UUID):
             return str(obj)
         if isinstance(obj, Decimal):
             return float(obj)
+        if isinstance(obj, set):
+            return [o for o in obj]
         if self.refs and hasattr(obj, 'to_ref'):
             return obj.to_ref()
         if hasattr(obj, 'to_json'):
             return obj.to_json()
         if hasattr(obj, 'to_dict'):
             return obj.to_dict()
+
+        try:
+            from sqlalchemy.orm import Query
+            from sqlalchemy.ext.associationproxy import _AssociationList
+            if isinstance(obj, Query) or isinstance(obj, _AssociationList):
+                return [r for r in obj]
+        except ImportError:
+            pass
+
         try:
             from bson.objectid import ObjectId
             if isinstance(obj, ObjectId):
