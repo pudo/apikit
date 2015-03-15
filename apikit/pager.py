@@ -2,7 +2,7 @@ import math
 from urllib import urlencode
 from flask import request, url_for
 
-from restpager.args import arg_int, get_limit
+from apikit.args import arg_int, get_limit
 
 
 class Pager(object):
