@@ -2,7 +2,7 @@ import math
 from urllib import urlencode
 from flask import request, url_for
 
-from .args import arg_int, get_limit
+from restpager.args import arg_int, get_limit
 
 
 class Pager(object):
@@ -148,5 +148,5 @@ class Pager(object):
             'pages': self.pages,
             'limit': self.limit,
             'offset': self.offset,
-            'results': results_converter(list(self))
+            'results': results_converter(list(self)),
         }

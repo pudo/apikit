@@ -1,14 +1,13 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='restpager',
+    name='restkit',
     version='0.1',
-    url='http://github.com/pudo/restpager',
+    url='http://github.com/pudo/restkit',
     license='MIT',
     author='Friedrich Lindenberg',
     author_email='friedrich@pudo.org',
-    description='A RESTful pager class for Flask',
-    long_description='A RESTful pager class for Flask',
+    description='A set of utility functions for RESTful Flask applications.',
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     namespace_packages=[],
     include_package_data=True,
