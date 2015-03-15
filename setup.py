@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='restkit',
-    version='0.1',
-    url='http://github.com/pudo/restkit',
+    name='apikit',
+    version='0.2',
+    url='http://github.com/pudo/apikit',
     license='MIT',
     author='Friedrich Lindenberg',
     author_email='friedrich@pudo.org',

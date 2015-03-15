@@ -1,4 +1,4 @@
-# restkit
+# apikit
 
 This package contains a simple, re-usable set of functions for building
 RESTful web APIs in Flask.
