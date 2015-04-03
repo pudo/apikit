@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='apikit',
-    version='0.3',
+    version='0.3.1',
     url='http://github.com/pudo/apikit',
     license='MIT',
     author='Friedrich Lindenberg',
