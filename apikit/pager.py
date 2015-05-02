@@ -120,7 +120,8 @@ class Pager(object):
         return self._results.__iter__()
 
     def __len__(self):
-        if hasattr(self.query, 'count'):
+        if hasattr(self.query, 'count') and \
+                not isinstance(self.query, (list, tuple, set)):
             return self.query.count()
         return len(self.query)
 
