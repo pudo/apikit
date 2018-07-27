@@ -1,8 +1,10 @@
 import math
-from urllib import urlencode
-from flask import request, url_for
+
+import six
+from six.moves.urllib.parse import urlencode
 
 from apikit.args import arg_int, get_limit
+from flask import request, url_for
 
 
 class Pager(object):
@@ -64,7 +66,7 @@ class Pager(object):
             if key == self.arg_name('offset'):
                 continue
             for value in request.args.getlist(key):
-                args.append((key, unicode(value).encode('utf-8')))
+                args.append((key, six.text_type(value).encode('utf-8')))
         return args
 
     @property
@@ -83,16 +85,16 @@ class Pager(object):
         return range(low, high + 1)
 
     def has_url_state(self, arg, value):
-        return (arg, unicode(value).encode('utf-8')) in self.query_args
+        return (arg, six.text_type(value).encode('utf-8')) in self.query_args
 
     def add_url_state(self, arg, value):
         query_args = self.query_args
-        query_args.append((arg, unicode(value).encode('utf-8')))
+        query_args.append((arg, six.text_type(value).encode('utf-8')))
         return self.url(query_args)
 
     def remove_url_state(self, arg, value):
         query_args = [t for t in self.query_args if
-                      t != (arg, unicode(value).encode('utf-8'))]
+                      t != (arg, six.text_type(value).encode('utf-8'))]
         return self.url(query_args)
 
     def page_url(self, page):
